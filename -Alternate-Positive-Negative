@@ -1,0 +1,28 @@
+class Solution {
+    void rearrange(ArrayList<Integer> arr) {
+        // code here
+        ArrayList<Integer> positive = new ArrayList<>();
+        ArrayList<Integer> negative = new ArrayList<>();
+        
+        for(int ele : arr){
+            if(ele >= 0 ) positive.add(ele);
+            else negative.add(ele);
+        }
+        
+        int i = 0 , idx = 0 ;
+        while(i < positive.size() && i < negative.size()){
+           arr.set(idx++ , positive.get(i));
+           arr.set(idx++ , negative.get(i));
+           i++;
+        }
+        while(i < positive.size()) {
+            arr.set(idx++ , positive.get(i));
+            i++;
+        }
+        while(i < negative.size()) {
+           arr.set(idx++ , negative.get(i));
+            i++;
+        }
+        
+    }
+}
